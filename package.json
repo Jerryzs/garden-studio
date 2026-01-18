@@ -1,0 +1,22 @@
+{
+  "name": "nwplus",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.25.0",
+    "eslint": "^9.39.2",
+    "prettier": "^3.8.0",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.53.0"
+  },
+  "scripts": {
+    "dev": "docker compose up --build --watch",
+    "reset": "docker compose up --build --force-recreate --renew-anon-volumes --watch",
+    "mysql-shell": "docker compose exec mysql mysql -p'msdev01$'"
+  }
+}

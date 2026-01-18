@@ -1,0 +1,59 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - '32571:32571'
+    depends_on:
+      - backend
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend
+          target: /app
+          ignore:
+            - node_modules/
+              package.json
+              Dockerfile*
+        - action: rebuild
+          path: ./frontend/package.json
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - '59558:59558'
+    depends_on:
+      mysql:
+        condition: service_healthy
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./backend
+          target: /app
+          ignore:
+            - node_modules/
+              db/*.sql
+              package.json
+              Dockerfile*
+        - action: rebuild
+          path: ./backend/package.json
+
+  mysql:
+    image: mysql:lts
+    restart: always
+    environment:
+      - MYSQL_TCP_PORT=36237
+      - MYSQL_ROOT_PASSWORD=nwplus01$
+      - MYSQL_DATABASE=main
+    expose:
+      - '36237'
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      timeout: 10s
+      retries: 5
+      interval: 5s
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
