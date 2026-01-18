@@ -53,3 +53,4 @@ export const listUserAIds = () => $fetch<number[]>('/activity/upcoming', { idonl
 export const listTimelineActivities = () => $fetch<Activity[]>('/activity/list')
 export const approveActivity = (id: number | string) => $fetch<null>('/activity/approve', { id })
 export const joinActivity = (id: number | string) => $fetch<null>('/activity/join', { id })
+export const createActivity = (form: Record<string, string>) => $fetch<null>('/activity/create', form)

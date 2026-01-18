@@ -134,4 +134,32 @@ router.route('/activity/join').post(auth, async (req, res) => {
   }
 })
 
+router.route('/activity/create').post(auth, async (req, res) => {
+  const user = req.user
+  const { name, startdate, starttime, length, location, detail } = req.body as {
+    name?: string
+    startdate?: string
+    starttime?: string
+    length?: string
+    location?: string
+    detail?: string
+  }
+
+  try {
+    if (!user) {
+      res.status(403).json({ message: 'You are not logged in.' })
+      return
+    }
+
+    await pool.execute(
+      'insert into activity(name, startdate, starttime, length, location, detail) values (?, ?, ?, ?, ?, ?)',
+      [name ?? '', startdate ?? '', starttime ?? '', length ?? '', location ?? '', detail ?? '']
+    )
+    return res.json(null)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ message: 'Server crashed.' })
+  }
+})
+
 export default router
