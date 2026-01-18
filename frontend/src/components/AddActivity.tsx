@@ -10,6 +10,7 @@ const AddActivity = () => {
     const data = new FormData(e.currentTarget)
     const object: Record<string, string> = {}
     data.forEach((value, key) => (object[key] = value as string))
+    object['length'] = `${object['length']}:00`
     api.createActivity(object).then((result) => {
       if (!result) {
         navigate('/discover')
@@ -51,7 +52,7 @@ const AddActivity = () => {
           <label htmlFor='location' className='form-label'>
             Location
           </label>
-          <input required type='text' className='form-control' id='location' placeholder=''></input>
+          <input required name='location' type='text' className='form-control' id='location' placeholder=''></input>
         </div>
         <div className='mb-3'>
           <label htmlFor='desc' className='form-label'>

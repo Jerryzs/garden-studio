@@ -7,6 +7,7 @@ const formatTime = (time: string) => {
   const minutes = time.substring(3, 5)
 
   if (time > '12:00') {
+    if (timeInt === 12) return `${timeInt}:${minutes} PM`
     return `${timeInt - 12}:${minutes} PM`
   } else {
     return `${timeInt}:${minutes} AM`
