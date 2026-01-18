@@ -31,12 +31,12 @@ create table `activity` (
   `startdate` date not null,
   `starttime` time not null,
   `length` time not null,
-  `capacity` int unsigned not null,
+  `capacity` int unsigned,
   `image` varchar(512),
   `approved` bit(1) not null default 0,
   `location` varchar(256) not null,
-  `lat` decimal(8, 6) not null,
-  `lon` decimal(9, 6) not null,
+  `lat` decimal(8, 6),
+  `lon` decimal(9, 6),
   `detail` text not null,
   primary key (`id`)
 );

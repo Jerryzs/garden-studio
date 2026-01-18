@@ -22,7 +22,7 @@ export const Layout = () => {
   return (
     <>
       <Outlet context={user} />
-      <nav className='d-md-none fixed-bottom bg-body-tertiary'>
+      <nav className='fixed-bottom bg-body-tertiary'>
         <ul className='nav nav-justified text-dark'>
           <li className='nav-item'>
             <NavLink className='nav-link' to='/discover'>

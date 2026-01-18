@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router'
 import { Layout } from './components/Layout'
 
+import AddActivity from './components/AddActivity'
 import Browse from './components/Browse'
 import Home from './components/Home'
 import Profile from './components/Profile'
@@ -23,6 +24,9 @@ createRoot(document.getElementById('root')!).render(
         <Route element={<Protected />}>
           <Route index element={<Home />}></Route>
           <Route path='profile' element={<Profile />}></Route>
+          <Route path='activity'>
+            <Route path='new' element={<AddActivity />}></Route>
+          </Route>
         </Route>
       </Route>
     </Routes>
