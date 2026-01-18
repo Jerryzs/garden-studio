@@ -1,12 +1,11 @@
 import { Link } from 'react-router'
 
 const Welcome = () => {
-  // TODO: name
   return (
     <div className='position-relative vh-100'>
       <div className='position-absolute w-100 text-center' style={{ top: '20vh' }}>
-        <h1 className='display-1 fw-medium'>Welcome to</h1>
-        <h2 className='display-4'>nwHacks</h2>
+        <h1 className='display-4'>Welcome to</h1>
+        <h2 className='display-2 fw-medium'>Garden Studio!</h2>
       </div>
       <div className='position-absolute w-100 bottom-0'>
         <div className='bg-secondary' style={{ bottom: '30vh', height: '15vh', borderRadius: '50% 50% 0 0' }}></div>
