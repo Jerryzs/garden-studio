@@ -10,7 +10,7 @@ const Profile = () => {
   const [activities, setActivities] = useState<api.Activity[] | undefined>()
 
   const update = () => {
-    api.listUserActivities().then((result) => {
+    api.listTimelineActivities().then((result) => {
       if ('message' in result) {
         return
       }
@@ -47,7 +47,7 @@ const Profile = () => {
         </div>
       </div>
       <div className='container py-4'>
-        <h2 className='display-4'>{user?.privilege === 1 ? 'Need approval' : 'Timeline'}</h2>
+        <h2 className='display-4'>{user?.privilege === 1 ? 'Pending approval' : 'Timeline'}</h2>
         <div className='py-2'>
           {!activities
             ? 'Loading...'

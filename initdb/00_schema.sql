@@ -30,7 +30,7 @@ create table `activity` (
   `name` varchar(256) not null,
   `startdate` date not null,
   `starttime` time not null,
-  `length` int unsigned not null,
+  `length` time not null,
   `capacity` int unsigned not null,
   `image` varchar(512),
   `approved` bit(1) not null default 0,
