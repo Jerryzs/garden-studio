@@ -3,5 +3,18 @@
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/variables-dark';
 
+$body-bg: #fdfae7;
+// $body-tertiary-bg: #d9d9d9;
+
+// Add a custom color to $theme-colors
+$custom-colors: (
+  'primary': #434284,
+  'secondary': #dcdcfa,
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$nav-link-color: $dark;
+$nav-link-hover-color: $dark;
+
 @import 'bootstrap/scss/maps';
 @import 'bootstrap/scss/mixins';

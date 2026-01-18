@@ -28,7 +28,25 @@ export interface User {
   privilege: number
 }
 
+export interface Activity {
+  id: number
+  name: string
+  startdate: string
+  starttime: string
+  length: string
+  capacity: number
+  image: string
+  approved: number
+  location: string
+  lat: number
+  lon: number
+  detail: string
+}
+
 export const auth = (username: string, password: string, name?: string) =>
   $fetch<null>('/user', { username, password, name })
 export const getUser = () => $fetch<User>('/user')
 export const logout = () => $fetch<null>('/user/logout')
+export const listAllActivities = () => $fetch<Activity[]>('/activity/all')
+export const listUserActivities = () => $fetch<Activity[]>('/activity/list')
+export const approveActivity = (id: number | string) => $fetch<Activity[]>('/activity/approve', { id })
